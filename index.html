@@ -73,22 +73,19 @@
   <div id="container"></div>
 
   <script>
-    // Letters (corrected syntax)
    const letters = [
-`Hi my pretty lil fuck... this is day 1 of daily letters you get to see until I see you which should be now but thats fine. I just want to say I love you and have fun tonight baby... I miss you so much and I wish I was there with you princess.`,
-"Day 2: Good morning princess... wakey wakey. I'm still in college... I'll be home late today. I love you so fucking much and I miss you like crazy. I wish I was there to wake you up and get you breakfast in bed. Time to lock in my love and show me how big of a smartypant you are. My smartypant.",
-"Day 3: Good morning my love. I missed you so much last night... I passed out listening to music. Thanks for getiing me addicted to ed sheeran... no seriously every song reminds me of you. You're so fucking adorable for staying up today... you genuinely didn't have to but I love you so much. I want to come to Dublin so bad and just surprise you by waking you up with forehead kisses and then a hot ass makeout sesh. Good luck for classes baby... call me once youre done <3 ",
-`Hi my princess.. this is day 4 of daily letters you get to see until I see you. I'm really sorry about the mess I created yesterday with the entire Aayut thing and not telling you about Amber and Ruhani... I have a tendency do make such mistakes.. Im getting better at it and ik it may seem funny since I just fucked up but I want to be better for you and I'm tryna do everything possible to change that. I love you so much and I wish I was there to take care of you today. I want to baby you so bad and I wish I could just spawn there. Sorry for not being the perfect guy.. ik I have my perks and idk how long you can bare with them but just don't give up on me. I love you.`,
-`Good morning riri. I'm hella fucking late to college... Priyansh Aarush Nitya and I came together. Last night sucked in a nutshell... I hate fighting with you. Especially cuz you're so fucking far away and I can't even show up. Im sorry for making you think that I don't care or I'm all words... sometimes all I have are words and I do my best with that. In relation to what has now become a gift hamper for you is gonna be there soon enough... I love you so fucking much and I know it seems like I don't but I really fucking do ri. I didn't sleep at all last night.. I just want to hold you and fall asleep rn. I love you `,    
-`Hi beautiful. I fucking hated the past 2 days... being away from you is the worst feeling in the world and I never want to go through something like that ever again. You mean the world to me and I swear to god I fall in love with you more each day... with each smile of yours, each word you say, each time u look at me with those perfect doe eyes... I have the biggest fucking crush on you and I'm not afraid to show it. Today I got my riri back and I have no words. I love you so much baby... have fun eating dinner and call me once u get back... PS: U mightve to wake me up... `, 
-`Hi princess! Good fucking morning. Just so you know you're fucking adorable when you sleep... One day im jst gonna spawn in your room. Fuck the distance i hate this shit why tf r u so far away. Oh also im terribly sorry for waking you up in the morning i didn't know i was unmuted. the best part about last night was when we both sorta woke up n smiled at each other. Please lock the fuck in today mf is busy my birthday week.. I love you. See you when you wake up baby. `,
-];
+`Hi my pretty lil fuck... this is day 1...`,
+"Day 2: Good morning princess...",
+"Day 3: Good morning my love...",
+`Hi my princess.. this is day 4...`,
+`Good morning riri. I'm hella fucking late...`,    
+`Hi beautiful. I fucking hated the past 2 days...`, 
+`Hi princess! Good fucking morning. Just so you know you're fucking adorable when you sleep... One day im jst gonna spawn in your room. Fuck the distance i hate this shit why tf r u so far away. Oh also im terribly sorry for waking you up in the morning i didn't know i was unmuted. the best part about last night was when we both sorta woke up n smiled at each other. Please lock the fuck in today mf is busy my birthday week.. I love you. See you when you wake up baby.`,
+   ];
 
+    // Start date = September 22, 2025
+    const startYear = 2025, startMonth = 9, startDay = 22;
 
-    // Start date (Day 1) in Dublin
-    const startYear = 2025, startMonth = 10, startDay = 22;
-
-    // Get today's date parts in Dublin
     function getDublinYMD() {
       const now = new Date();
       const parts = new Intl.DateTimeFormat("en-GB", {
@@ -101,7 +98,6 @@
       return {y,m,d};
     }
 
-    // Convert YMD → UTC midnight for safe diff
     function toUTCmidnight(y,m,d){
       return Date.UTC(y,m-1,d);
     }
@@ -111,20 +107,20 @@
       const todayUTC = toUTCmidnight(today.y, today.m, today.d);
       const startUTC = toUTCmidnight(startYear, startMonth, startDay);
 
-      // Day number: 1 on start date
       const diffDays = Math.floor((todayUTC - startUTC) / (1000*60*60*24)) + 1;
       const index = diffDays - 1;
 
       const container = document.getElementById("container");
       container.innerHTML = "";
 
-      if (index >= 0 && index < letters.length) {
+      if (index >= 0) {
         const card = document.createElement("div");
         card.className = "card";
+        const safeIndex = Math.min(index, letters.length - 1); // fallback to last letter
         card.innerHTML = `
           <div class="card-inner">
             <div class="card-front">Open this when you miss me</div>
-            <div class="card-back">${letters[index]}</div>
+            <div class="card-back">${letters[safeIndex]}</div>
           </div>
         `;
         card.addEventListener("click", () => {
@@ -134,14 +130,13 @@
       } else {
         const p = document.createElement("p");
         p.className = "none";
-        p.textContent = "No letter for today 💌";
+        p.textContent = "No letter yet 💌";
         container.appendChild(p);
       }
     }
 
     renderCard();
 
-    // Refresh at next Dublin midnight
     function msUntilMidnightDublin() {
       const t = getDublinYMD();
       const nextUTC = toUTCmidnight(t.y, t.m, t.d+1);
@@ -155,12 +150,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
