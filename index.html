@@ -161,23 +161,25 @@ P.S.: I love you baby, and I’ll keep reminding you of how much you mean to me 
     }, msUntilMidnightDublin());
 
     // 💌 Log to Google Sheet when opened from Dublin
-    const webhookURL = "https://script.google.com/macros/s/AKfycby3FzscI9YeS0VZenft5tFCFJVKJ46EC1HGYZu8-d1PluBI0uoJv-pynOT0ZS0qc61Vig/exec";
-    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    if (tz === "Europe/Dublin") {
-      fetch(webhookURL, {
-        method: "POST",
-        body: JSON.stringify({
-          location: tz,
-          message: "Riana opened the letter 💌"
-        }),
-        headers: { "Content-Type": "application/json" }
-      }).then(() => {
-        console.log("Logged to Google Sheet 💌");
-      }).catch(err => console.error("Error logging:", err));
-    }
+    const webhookURL = "https://script.google.com/macros/s/AKfycbwCpYVPMkCSJ261CM5uooaRWA4hm5Np5m6l_SW6DfF0acEznzupcCgkTAhVAvsLOQ9bMw/exec";
+  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  if (true) {
+  fetch(webhookURL, {
+    method: "POST",
+    body: JSON.stringify({
+      location: tz,
+      message: "Riana opened the letter 💌"
+    }),
+    headers: { "Content-Type": "application/json" }
+  }).then(() => {
+    console.log("Logged to Google Sheet 💌");
+  }).catch(err => console.error("Error logging:", err));
+}
+
   </script>
 </body>
 </html>
+
 
 
 
