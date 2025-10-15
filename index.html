@@ -161,9 +161,11 @@ P.S.: I love you baby, and I’ll keep reminding you of how much you mean to me 
     }, msUntilMidnightDublin());
 
     // 💌 Log to Google Sheet when opened from Dublin
-    const webhookURL = "https://script.google.com/macros/s/AKfycbwCpYVPMkCSJ261CM5uooaRWA4hm5Np5m6l_SW6DfF0acEznzupcCgkTAhVAvsLOQ9bMw/exec";
-  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  if (true) {
+    // 💌 Send to Google Sheet if opened from Dublin
+const webhookURL = "https://script.google.com/macros/s/AKfycbxvgCi_h8dwtP-ynFuTIDoP1_SqMe0xdocKFcN94cM6QCni8UOAwlBYuA6p2fSKWwI2Lg/exec";
+const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+if (true) {
   fetch(webhookURL, {
     method: "POST",
     body: JSON.stringify({
@@ -171,14 +173,16 @@ P.S.: I love you baby, and I’ll keep reminding you of how much you mean to me 
       message: "Riana opened the letter 💌"
     }),
     headers: { "Content-Type": "application/json" }
-  }).then(() => {
-    console.log("Logged to Google Sheet 💌");
-  }).catch(err => console.error("Error logging:", err));
+  })
+  .then(() => console.log("Logged to Google Sheet 💌"))
+  .catch(err => console.error("Error logging:", err));
 }
+
 
   </script>
 </body>
 </html>
+
 
 
 
