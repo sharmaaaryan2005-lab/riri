@@ -1,79 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Open This When You Miss Me</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #fffaf0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-
-    .card {
-      perspective: 1000px;
-      cursor: pointer;
-      width: 320px;
-      max-width: 92%;
-    }
-    .card-inner {
-      position: relative;
-      width: 100%;
-      padding-top: 150%;
-      transition: transform 0.8s;
-      transform-style: preserve-3d;
-    }
-    .card.flipped .card-inner {
-      transform: rotateY(180deg);
-    }
-
-    .card-front, .card-back {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      backface-visibility: hidden;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 22px;
-      text-align: center;
-      word-break: break-word;
-      overflow: hidden;
-    }
-
-    .card-front {
-      background: #FFD700;
-      font-size: 1.2em;
-      font-weight: bold;
-    }
-
-    .card-back {
-      background: white;
-      transform: rotateY(180deg);
-      font-size: 1em;
-      line-height: 1.45;
-      text-align: left;
-      white-space: pre-wrap;
-    }
-
-    p.none {
-      font-size: 1.1em;
-      color: #444;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Open This When You Miss Me</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #fffaf0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  .card { perspective: 1000px; cursor: pointer; width: 320px; max-width: 92%; }
+  .card-inner {
+    position: relative;
+    width: 100%;
+    padding-top: 150%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  .card.flipped .card-inner { transform: rotateY(180deg); }
+  .card-front, .card-back {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 22px;
+    text-align: center;
+    word-break: break-word;
+    overflow: hidden;
+  }
+  .card-front { background: #FFD700; font-size: 1.2em; font-weight: bold; }
+  .card-back {
+    background: white;
+    transform: rotateY(180deg);
+    font-size: 1em;
+    line-height: 1.45;
+    text-align: left;
+    white-space: pre-wrap;
+  }
+  p.none { font-size: 1.1em; color: #444; }
+</style>
 </head>
 <body>
-  <div id="container"></div>
-
-  <script>
-    const letters = [
+<div id="container"></div>
+<script>
+const letters = [
 `Hi my pretty lil fuck... this is day 1...`,
 "Day 2: Good morning princess...",
 "Day 3: Good morning my love...",
@@ -82,102 +62,75 @@
 `Hi beautiful. I fucking hated the past 2 days...`, 
 `Hi princess! Good fucking morning. Just so you know you're fucking adorable when you sleep... One day im jst gonna spawn in your room. Fuck the distance i hate this shit why tf r u so far away. Oh also im terribly sorry for waking you up in the morning i didn't know i was unmuted. the best part about last night was when we both sorta woke up n smiled at each other. Please lock the fuck in today mf is busy my birthday week.. I love you. See you when you wake up baby.`,
 `Hi riri. I’ve been sitting here thinking about how I’ve been with you lately and honestly I know I mess up a lot. Sometimes I don’t communicate properly, sometimes I let my moods get the better of me and I hate that you end up feeling it from so far away. You deserve someone who shows up better than I do and I’m trying to get there, even if it doesn’t look like it right now. Please don’t ever think I take you for granted... I don’t. You’re the best thing in my life and I don’t want to lose that. I love you.`,
-`Hey riri. Idk what it was about today but it really hit me how fucking special you are to me. Like I always knew it but today it just smacked me in the face... you’re my favourite person and the only one who actually feels like home. I don’t ever want to lose that. Also, this next part is about your friends and you can read it out to them… I’m honestly so grateful to you guys for being there for her. It makes me breathe easier knowing she's got people around her who make you feel safe and at home when I can’t be there myself. I’m lowkey jealous but mostly just thankful. I owe you guys big time.
-P.S.: I love you baby, and I’ll keep reminding you of how much you mean to me every chance I get.`,
-`Hey baby. I know you’re in pain and I hate that I can’t be there to take care of you right now. Just go have fun at karaoke, sing your lungs out and try to forget the pain for a bit.. you deserve that. Lowkey, I kept wishing you were with me at the engagement today. It felt like something was missing the whole time. I can’t wait for the day I finally get to have you by my side at stuff like this and actually introduce you to my family. That’s all I want, honestly. Until then, just know I love you more than anything.`,  
-`hey riri. i’ve been thinking about last night and i feel shitty about it. I know I said things I shouldn’t have and I hate that I made you feel off. You don’t deserve that. You’re way too special to me for me to keep messing things up. Have fun tonight at d2’s, okay? Don’t overthink, just enjoy yourself for a bit. I’ll be right here when you’re back. I love you so much, more than I can ever put into words. It’s stupid how much you mean to me.`,
-`hey baby. i missed you so much yesterday. Birthday didn’t feel the same without you here, but somehow you still made it special from miles away. I don’t know how you do that. The gifts were perfect... especially the lego cars, that one really got me. You always know exactly what’ll make me smile. I just wish you were here with me, that’s all that was missing. I love you so much.`,
-`hey riri. last night felt weird. We were talking but it didn’t really feel like we were, you know? You just seemed a little distant. I get that we’re both busy and have to study, but I still try to take out as much time as I can just to talk to you. We’re already far apart, and I don’t want to feel that gap getting bigger. After we stopped talking, I kept replaying that video of us together. I don’t even know why... maybe just to feel a little closer to you. I wanna hold you so bad, just for a bit. I’m literally thinking about you all the time. I love you, and I just need you to start talking to me again. I’m not trying to fight, I just don’t want you to hate me. That’s why I keep trying to fix things and make you talk to me. I’m never gonna give up on you, no matter how rough it gets.`,
-`hi riri. i don’t even know how to start this one. Today just feels heavy. Writing this hits different knowing we’re not together anymore. It’s weird, because you’ve been such a constant part of my days that everything feels a bit off now. I keep catching myself wanting to text you random things like I always did, then remembering that things aren’t the same. I don’t really know what happens next, but I know that what we had meant everything to me. No matter how it ended, I don’t regret a single part of it. You made my life feel louder, warmer, and just… better. I still love you, probably more quietly now, but it’s there. Maybe it’ll always be. I hope you’re okay, really.`,
-`hi riri. day 2. it still feels weird waking up and not sending you a good morning text. I keep unlocking my phone out of habit and then just staring at it. Everything feels too quiet. I don’t even know what I’m supposed to do with all this space that used to be you. I know we said we needed this, and maybe it’s for the best, but it doesn’t make it any easier. I keep thinking about the small things — your voice, the way you’d say my name when you were half asleep, all that. I miss it more than I thought I would. I’m trying to keep it together, trying to let you breathe, but I still think about you every few hours. I hope you’re doing okay, even if I’m not the one asking anymore.`,
-`hi riri. day 3. it’s starting to sink in now, i think. Not just the fact that we’re done, but what that actually means. No more late calls, no more texts to check if you’ve eaten, no more random “i miss you”s in the middle of the day. It’s weird how fast something that used to be my whole routine just… stops. I’ve been trying to keep busy, but you still cross my mind all the time. Not in a dramatic way, just in small flashes… a song, a phrase, some random thing I see and think you’d laugh at. And every time it hits, it’s like this quiet reminder that you were real… we were real. I’m not angry anymore. I just hope you’re okay. I still care, even if I’m not supposed to. I probably always will.`,
-`hi riri. day 4. i had my birthday party last night… we went to bohca… the same place where we met… and the whole time i couldn’t stop thinking about you. Every corner of that place reminded me of you. The lights, the music, the crowd… it all felt the same, just without you in it. Everyone was having fun and I tried to too… but it didn’t feel right. I kept catching myself looking around like maybe you’d just be there somehow. It’s weird how a place can still look the same but feel completely different. I should’ve been happy, but all i wanted was you there. Even for a minute. Even just to see you again. Bohca doesn’t feel like bohca anymore without you.`,
-`hi riri. day 5. first day of exams today… marketing’s done and accounts is tomorrow. I’ve been trying to focus but somehow everything keeps circling back to you. The music I listen to while studying… the random notes on my desk… even the way I try to explain things to myself reminds me of when I used to teach you eco. It’s strange how someone can be so tied to everything around you. I’ll be in the middle of something completely normal and then suddenly it’s you in my head again. I miss those little moments more than I can say. I’m doing fine, I guess, just feels a little emptier now. I hope you’re doing okay too… really.`,
-`hi riri. day 6. had my accounts exam today… it went okay, I guess. I was tired but managed to get through it. You texted me last night and honestly, seeing your name pop up again hit different. I didn’t even know what to feel at first. Part of me wanted to smile… part of me just froze. It’s weird how even a few words from you can mess with my head like that. I’ve been trying to keep things steady… focus on exams, stay distracted… but the moment I see your name, it’s like everything else fades for a second. I don’t know what any of this means, or if it’s supposed to mean anything at all… but I do know that I still miss you. A lot.`,
-`hi riri. day 7. had my legal exam today… it actually went really well. Came back and passed out in the afternoon, and I ended up dreaming about you. I was in Dublin, surprising you out of nowhere, and then somehow we were in Italy together… just walking around, laughing, being us again. It was such a simple dream but it stuck with me. For a few minutes after I woke up, it felt like everything was okay again. Funny how even in my sleep, my mind still goes back to you. I hope you’re doing okay and having fun out there… really. And yeah, I still love you. PS: the story was to get your attention.. don’t be mad`
-    ];
+// … include all your letters exactly as before …
+`hi riri. day 7. had my legal exam today… it actually went really well. came back and passed out in the afternoon, and I ended up dreaming about you. I was in Dublin, surprising you out of nowhere, and then somehow we were in Italy together… just walking around, laughing, being us again. It was such a simple dream but it stuck with me. For a few minutes after I woke up, it felt like everything was okay again. Funny how even in my sleep, my mind still goes back to you. I hope you’re doing okay and having fun out there… really. And yeah, I still love you. PS: the story was to get your attention.. don’t be mad`
+];
 
-    const startYear = 2025, startMonth = 9, startDay = 22;
+const startYear = 2025, startMonth = 9, startDay = 22;
 
-    function getDublinYMD() {
-      const now = new Date();
-      const parts = new Intl.DateTimeFormat("en-GB", {
-        timeZone: "Europe/Dublin",
-        year: "numeric", month: "2-digit", day: "2-digit"
-      }).formatToParts(now);
-      const y = parseInt(parts.find(p=>p.type==="year").value,10);
-      const m = parseInt(parts.find(p=>p.type==="month").value,10);
-      const d = parseInt(parts.find(p=>p.type==="day").value,10);
-      return {y,m,d};
-    }
+function getDublinYMD() {
+  const now = new Date();
+  const parts = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Dublin", year:"numeric", month:"2-digit", day:"2-digit" }).formatToParts(now);
+  return {
+    y: parseInt(parts.find(p=>p.type==="year").value),
+    m: parseInt(parts.find(p=>p.type==="month").value),
+    d: parseInt(parts.find(p=>p.type==="day").value)
+  };
+}
 
-    function toUTCmidnight(y,m,d){
-      return Date.UTC(y,m-1,d);
-    }
+function toUTCmidnight(y,m,d){ return Date.UTC(y,m-1,d); }
 
-    function renderCard() {
-      const today = getDublinYMD();
-      const todayUTC = toUTCmidnight(today.y, today.m, today.d);
-      const startUTC = toUTCmidnight(startYear, startMonth, startDay);
+function renderCard(){
+  const today = getDublinYMD();
+  const todayUTC = toUTCmidnight(today.y,today.m,today.d);
+  const startUTC = toUTCmidnight(startYear,startMonth,startDay);
+  const diffDays = Math.floor((todayUTC - startUTC)/(1000*60*60*24))+1;
+  const index = diffDays-1;
+  const container = document.getElementById("container");
+  container.innerHTML="";
+  if(index>=0){
+    const card=document.createElement("div");
+    card.className="card";
+    const safeIndex = Math.min(index, letters.length-1);
+    card.innerHTML=`
+      <div class="card-inner">
+        <div class="card-front">Open this when you miss me</div>
+        <div class="card-back">${letters[safeIndex]}</div>
+      </div>`;
+    card.addEventListener("click", ()=>card.classList.toggle("flipped"));
+    container.appendChild(card);
+  }else{
+    const p=document.createElement("p");
+    p.className="none";
+    p.textContent="No letter yet 💌";
+    container.appendChild(p);
+  }
+}
 
-      const diffDays = Math.floor((todayUTC - startUTC) / (1000*60*60*24)) + 1;
-      const index = diffDays - 1;
+renderCard();
 
-      const container = document.getElementById("container");
-      container.innerHTML = "";
+function msUntilMidnightDublin(){
+  const t=getDublinYMD();
+  const nextUTC=toUTCmidnight(t.y,t.m,t.d+1);
+  return nextUTC - Date.now();
+}
 
-      if (index >= 0) {
-        const card = document.createElement("div");
-        card.className = "card";
-        const safeIndex = Math.min(index, letters.length - 1);
-        card.innerHTML = `
-          <div class="card-inner">
-            <div class="card-front">Open this when you miss me</div>
-            <div class="card-back">${letters[safeIndex]}</div>
-          </div>
-        `;
-        card.addEventListener("click", () => card.classList.toggle("flipped"));
-        container.appendChild(card);
-      } else {
-        const p = document.createElement("p");
-        p.className = "none";
-        p.textContent = "No letter yet 💌";
-        container.appendChild(p);
-      }
-    }
+setTimeout(()=>{
+  renderCard();
+  setInterval(renderCard,24*60*60*1000);
+}, msUntilMidnightDublin());
 
-    renderCard();
+// 💌 Log to Google Sheet when opened from Dublin
+const webhookURL="https://script.google.com/macros/s/AKfycbz3BSg2v9M04YNnSvZHcv19R7PdXK35I7ysra81gMrqUgC8nR2gCc6FGlAVAbI4uMPAnA/exec";
+const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-    function msUntilMidnightDublin() {
-      const t = getDublinYMD();
-      const nextUTC = toUTCmidnight(t.y, t.m, t.d+1);
-      return nextUTC - Date.now();
-    }
-
-    setTimeout(() => {
-      renderCard();
-      setInterval(renderCard, 24*60*60*1000);
-    }, msUntilMidnightDublin());
-
-    // 💌 Log to Google Sheet when opened from Dublin
-    const webhookURL = "https://script.google.com/macros/s/AKfycbz3BSg2v9M04YNnSvZHcv19R7PdXK35I7ysra81gMrqUgC8nR2gCc6FGlAVAbI4uMPAnA/exec";
-    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-
-    if (true) {
-      fetch(webhookURL, {
-        method: "POST",
-        body: JSON.stringify({
-          location: tz,
-          message: "Riana opened the letter 💌"
-        }),
-        headers: { "Content-Type": "application/json" }
-      })
-      .then(response => response.json())
-      .then(data => console.log("Logged to Google Sheet 💌", data))
-      .catch(err => console.error("Error logging:", err));
-    }
-  </script>
+if(true){
+  fetch(webhookURL,{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body: JSON.stringify({ location: tz, message: "Riana opened the letter 💌" })
+  }).then(r=>console.log("Logged!")).catch(e=>console.error("Error logging:",e));
+}
+</script>
 </body>
 </html>
-
-
